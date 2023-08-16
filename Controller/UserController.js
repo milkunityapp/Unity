@@ -259,7 +259,7 @@ const Milk_Data=async(req,res)=>{
 
 const Milk_Data_find=async(req,res)=>{
 
-    var id=req.params.user_id;
+    var id=req.params.id;
 
     var data= await Milk_Data_Require.find({"user_id":id});
    

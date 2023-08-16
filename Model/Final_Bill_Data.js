@@ -10,7 +10,7 @@ const Sell_Data = new mongoose.Schema({
     payment_method: {
         type: String,
         enum: ['cash', 'online'],
-        required: true,
+        required: true, 
     },
     payment_Status: {
         type: String,
