@@ -158,10 +158,6 @@ const Registration_data_Update=async(req,res)=>{
 
 const Login_Data=async(req,res)=>
 {
-    // await storage.init( /* options ... */ );
-    // var id =  await storage.getItem('user_id');
-    var id=1;
-    req.body.user_id=id;
     
     var data = await form.find({"Mobile_Number":req.body.Mobile_Number});
 
@@ -170,9 +166,6 @@ const Login_Data=async(req,res)=>
    {
         if(data[0].password==req.body.password)
         {
-            // await storage.init( /* options ... */ );
-            // await storage.setItem('user_id',data[0].id);
-
             res.status(200).json(
                 data
             )
@@ -194,10 +187,7 @@ const Login_Data=async(req,res)=>
 
 const customer_Sell_Data=async(req,res)=>{
 
-    // await storage.init( /* options ... */ );
-    // var id =  await storage.getItem('user_id');
-    var id=1;
-    req.body.user_id=id;
+    req.body.user_id=req.params.user_id;
 
     const currentDate = new Date();
     req.body.date=currentDate.getDate();
@@ -254,10 +244,7 @@ const customer_Sell_Data_find_All=async(req,res)=>{
 };
 const Milk_Data=async(req,res)=>{
 
-    // await storage.init( /* options ... */ );
-    // var id =  await storage.getItem('user_id');
-    var id=1;
-    req.body.user_id=id;
+    req.body.user_id=req.params.user_id;
 
     const currentDate = new Date();
     req.body.date=currentDate.getDate();
@@ -272,10 +259,7 @@ const Milk_Data=async(req,res)=>{
 
 const Milk_Data_find=async(req,res)=>{
 
-    // await storage.init( /* options ... */ );
-    // var id =  await storage.getItem('user_id');
-
-    var id=1;
+    var id=req.params.user_id;
 
     var data= await Milk_Data_Require.find({"user_id":id});
    
