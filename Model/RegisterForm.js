@@ -5,7 +5,6 @@ const Register = new mongoose.Schema({
     Otp:{type:Number},
     Middle_Name:{type:String},
     Last_Name:{type:String},
-    Admin_Status:{type:String},
     Address:{type:String},
     email: {
       type: String,

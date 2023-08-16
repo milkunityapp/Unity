@@ -27,8 +27,6 @@ const Registration_data=async(req,res)=>{
         {
             var otp = ("" + Math.random()).substring(2, 8)
             req.body.Otp=otp;
-            var statuss="true";
-            req.body.Admin_Status=statuss;
             var a = await form.create(req.body);
             var mailOptions = {
                 from: 'milkunityapp@gmail.com',
@@ -94,7 +92,7 @@ const Admin_Registration_data=async(req,res)=>{
         {
             var statuss="true";
             req.body.Admin_Status=statuss;
-            var a = await form.create(req.body);
+            var a = await Admin_form.create(req.body);
             res.status(200).json(
                 a
              )
