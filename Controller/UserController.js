@@ -206,14 +206,7 @@ const customer_Sell_Data=async(req,res)=>{
 
     const currentTime = `${twelveHourFormat}:${minutes}: ${amOrPm}`;
     req.body.Sell_Time=currentTime;
-    var data = await form.find();
-    for (let index = 0; index < data.length; index++) 
-    {
-        if(data[index].user_id==req.params.user_id)
-        {
-            req.body.First_Name=data[index].First_Name;
-        }
-    }
+    req.body.First_Name=req.params.First_Name;
 
     var a=await customer_data.create(req.body);
     res.status(200).json(
@@ -222,17 +215,12 @@ const customer_Sell_Data=async(req,res)=>{
 };
 const customer_Sell_Data_find=async(req,res)=>{
     
-    var data= await customer_data.find();
-    for (let index = 0; index < data.length; index++) 
-    {
-        if(data[index].user_id==req.params.user_id)
-        {
-            var data1=data1+data[index];
-        }
-    }
+    var id=req.params.id;
+
+    var data= await customer_data.find({"user_id":id});
 
     res.status(200).json(
-        data1
+        data
     )
 };
 const customer_Sell_Data_find_All=async(req,res)=>{
