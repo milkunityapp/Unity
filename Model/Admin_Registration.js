@@ -5,7 +5,6 @@ const Admin_Register = new mongoose.Schema({
     Middle_Name:{type:String},
     Last_Name:{type:String},
     Admin_Status:{type:String},
-    
     email: {
       type: String,
       required: true,
