@@ -3,7 +3,7 @@ var customer_data=require("../Model/Final_Bill_Data");
 var Milk_Data_Require=require("../Model/Milk_Data");
 var product_Add_Data=require("../Model/Product_Add");
 var Admin_form=require("../Model/Admin_Registration");
-const storage = require('node-persist');
+// const storage = require('node-persist');
 
 
 var nodemailer = require('nodemailer');
@@ -158,8 +158,9 @@ const Registration_data_Update=async(req,res)=>{
 
 const Login_Data=async(req,res)=>
 {
-    await storage.init( /* options ... */ );
-    var id =  await storage.getItem('user_id');
+    // await storage.init( /* options ... */ );
+    // var id =  await storage.getItem('user_id');
+    var id=1;
     req.body.user_id=id;
     
     var data = await form.find({"Mobile_Number":req.body.Mobile_Number});
@@ -169,8 +170,8 @@ const Login_Data=async(req,res)=>
    {
         if(data[0].password==req.body.password)
         {
-            await storage.init( /* options ... */ );
-            await storage.setItem('user_id',data[0].id);
+            // await storage.init( /* options ... */ );
+            // await storage.setItem('user_id',data[0].id);
 
             res.status(200).json(
                 data
@@ -193,8 +194,9 @@ const Login_Data=async(req,res)=>
 
 const customer_Sell_Data=async(req,res)=>{
 
-    await storage.init( /* options ... */ );
-    var id =  await storage.getItem('user_id');
+    // await storage.init( /* options ... */ );
+    // var id =  await storage.getItem('user_id');
+    var id=1;
     req.body.user_id=id;
 
     const currentDate = new Date();
@@ -252,8 +254,9 @@ const customer_Sell_Data_find_All=async(req,res)=>{
 };
 const Milk_Data=async(req,res)=>{
 
-    await storage.init( /* options ... */ );
-    var id =  await storage.getItem('user_id');
+    // await storage.init( /* options ... */ );
+    // var id =  await storage.getItem('user_id');
+    var id=1;
     req.body.user_id=id;
 
     const currentDate = new Date();
@@ -269,8 +272,10 @@ const Milk_Data=async(req,res)=>{
 
 const Milk_Data_find=async(req,res)=>{
 
-    await storage.init( /* options ... */ );
-    var id =  await storage.getItem('user_id');
+    // await storage.init( /* options ... */ );
+    // var id =  await storage.getItem('user_id');
+
+    var id=1;
 
     var data= await Milk_Data_Require.find({"user_id":id});
    
