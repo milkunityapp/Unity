@@ -5,7 +5,7 @@ const multer = require('multer');
 
 const {Registration_data,Login_Data,customer_Sell_Data,Registration_data_Name,Milk_Data,
     Registration_data_Update,_Product_data_,Registration_data_Number,customer_Sell_Data_find,
-    Milk_Data_find,_Product_data_find,Admin_Registration_data,customer_Sell_Data_find_All}=require("../Controller/UserController");
+    Milk_Data_find,_Product_data_find,Admin_Registration_data,customer_Sell_Data_find_All,Milk_data_Update}=require("../Controller/UserController");
 
     
 // SET STORAGE
@@ -27,6 +27,7 @@ router.get('/Registration_data_Number/:Mobile_Number',Registration_data_Number);
 router.post('/Registration/Update/:id',Registration_data_Update);
 router.post('/Login',Login_Data);
 router.post('/customer-Selling/:user_id/:First_Name',customer_Sell_Data);
+router.post('/Milk_Data/Update/:id',Milk_data_Update);
 router.get('/customer-Selling/:id',customer_Sell_Data_find);
 router.get('/customer-Selling/',customer_Sell_Data_find_All);
 router.post('/Milk_Data/:user_id',Milk_Data);

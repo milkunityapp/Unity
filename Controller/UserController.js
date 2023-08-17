@@ -248,12 +248,14 @@ const Milk_Data=async(req,res)=>{
 const Milk_Data_find=async(req,res)=>{
 
     var id=req.params.id;
+    // var Month=req.params.Month;
+    // var year=req.params.year;
 
     var data= await Milk_Data_Require.find({"user_id":id});
-   
+    //var Month;
 
     res.status(200).json(
-        data
+       data
     )
 };
 
@@ -270,7 +272,14 @@ const _Product_data_= async(req,res)=>
         a
     )
 };
+const Milk_data_Update=async(req,res)=>{
+    var id = req.params.id;
+    var data= await form.findByIdAndUpdate(id,req.body);
 
+    res.status(200).json(
+        data
+    )
+};
 const _Product_data_find=async(req,res)=>{
     
     var data= await product_Add_Data.find();
@@ -279,5 +288,5 @@ const _Product_data_find=async(req,res)=>{
     )
 };
 module.exports={Registration_data,Login_Data,customer_Sell_Data,Registration_data_Name,Milk_Data,
-    Registration_data_Update,_Product_data_,Registration_data_Number,customer_Sell_Data_find,Milk_Data_find,_Product_data_find,
+    Registration_data_Update,_Product_data_,Registration_data_Number,customer_Sell_Data_find,Milk_Data_find,Milk_data_Update,_Product_data_find,
     Admin_Registration_data,customer_Sell_Data_find_All}
