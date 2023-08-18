@@ -2,7 +2,7 @@ const mongoose  = require("mongoose");
 const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 const Register = new mongoose.Schema({
     First_Name:{type:String},
-    Otp:{type:Number},
+    Otp:{type:String},
     Middle_Name:{type:String},
     Last_Name:{type:String},
     Address:{type:String},

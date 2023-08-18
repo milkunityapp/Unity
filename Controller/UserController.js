@@ -42,7 +42,7 @@ const Registration_data=async(req,res)=>{
                   console.log(error);
                 } else {
                     res.status(200).json(
-                        a
+                       [a]
                    )
                 }
               });
@@ -61,29 +61,6 @@ const Registration_data=async(req,res)=>{
             })}
     }
 };
-const Otp_Post=async(req,res)=>{
-            var otp = ("" + Math.random()).substring(2, 8)
-            var mailOptions = {
-                from: 'savanim469@gmail.com',
-                to: req.body.Email, 
-                subject: 'Sending Email using Node.js',
-                text: otp
-              };
-              transporter.sendMail(mailOptions, function(error, info){
-                if (error) {
-                  console.log(error);
-                } else {
-                    res.status(200).json(
-                         Otp_get=async(req,res)=>{
-                            res.status(200).json(
-                                otp
-                            )
-                        }
-                   )
-                }
-              });
-};
-
 
 const Admin_Registration_data=async(req,res)=>{
     var d=await form.find({'Mobile_Number':req.body.Mobile_Number});
@@ -130,7 +107,7 @@ const Registration_data_Name=async(req,res)=>{
     }
     console.log(data1)
     res.status(200).json(
-        data1
+        [data1]
     )
 };
 const Registration_data_Number=async(req,res)=>{
@@ -146,7 +123,7 @@ const Registration_data_Number=async(req,res)=>{
     }
     console.log(data1)
     res.status(200).json(
-        data1
+        [data1]
     )
 };
 
@@ -252,11 +229,21 @@ const Milk_Data=async(req,res)=>{
 const Milk_Data_find=async(req,res)=>{
 
     var id=req.params.id;
-    // var Month=req.params.Month;
-    // var year=req.params.year;
     console.log(id);
     var data= await Milk_Data_Require.find({"user_id":id});
-    //var Month;
+    
+    console.log(data)
+
+    res.status(200).json(
+       data
+    )
+};
+const Milk_Data_find_Date=async(req,res)=>{
+
+    var id=req.params.id;
+    console.log(id);
+    var data= await Milk_Data_Require.find({"$and":[{startMonth:{"$lte":8}},{startYear:{"$lte":2023}}]}).pretty();
+    
     console.log(data)
 
     res.status(200).json(
@@ -292,6 +279,29 @@ const _Product_data_find=async(req,res)=>{
         data
     )
 };
+const Otp_Post=async(req,res)=>{
+            var otp = ("" + Math.random()).substring(2, 8)
+            var mailOptions = {
+                from: 'savanim469@gmail.com',
+                to: req.body.Email, 
+                subject: 'Sending Email using Node.js',
+                text: otp
+              };
+              transporter.sendMail(mailOptions, function(error, info){
+                if (error) {
+                  console.log(error);
+                } else {
+                    res.status(200).json(
+                         Otp_get=async(req,res)=>{
+                            res.status(200).json(
+                                otp
+                            )
+                        }
+                   )
+                }
+              });
+};
+
 module.exports={Registration_data,Login_Data,customer_Sell_Data,Registration_data_Name,Milk_Data,
     Registration_data_Update,_Product_data_,Registration_data_Number,customer_Sell_Data_find,Milk_Data_find,Milk_data_Update,_Product_data_find,
-    Admin_Registration_data,customer_Sell_Data_find_All}
+    Admin_Registration_data,customer_Sell_Data_find_All,Milk_Data_find_Date}
