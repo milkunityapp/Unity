@@ -4,7 +4,7 @@ const mongoose  = require("mongoose");
 const multer = require('multer');
 
 const {Registration_data,Login_Data,customer_Sell_Data,Registration_data_Name,Milk_Data,
-    Registration_data_Update,_Product_data_,Registration_data_Number,customer_Sell_Data_find,Admin_Login_Data,
+    Registration_data_Update,_Product_data_,Registration_data_Number,customer_Sell_Data_find,
     Milk_Data_find,_Product_data_find,Admin_Registration_data,customer_Sell_Data_find_All,Milk_data_Update}=require("../Controller/UserController");
 
     

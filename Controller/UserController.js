@@ -294,4 +294,4 @@ const _Product_data_find=async(req,res)=>{
 };
 module.exports={Registration_data,Login_Data,customer_Sell_Data,Registration_data_Name,Milk_Data,
     Registration_data_Update,_Product_data_,Registration_data_Number,customer_Sell_Data_find,Milk_Data_find,Milk_data_Update,_Product_data_find,
-    Admin_Registration_data,customer_Sell_Data_find_All,Admin_Login_Data}
+    Admin_Registration_data,customer_Sell_Data_find_All}
