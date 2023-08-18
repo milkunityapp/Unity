@@ -112,6 +112,33 @@ const Admin_Registration_data=async(req,res)=>{
         })}
        
     }
+};const Admin_Login_Data=async(req,res)=>
+{
+    
+    var data = await Admin_form.find({"Mobile_Number":req.body.Mobile_Number});
+
+
+   if(data.length!=0)
+   {
+        if(data[0].password==req.body.password)
+        {
+            res.status(200).json(
+                data
+            )
+        }
+        else
+        {
+            res.status(200).json(
+                "check your email and password"
+            )
+        }
+   }
+   else
+   {
+        res.status(200).json(
+            "check your email and password"
+        )
+   }
 };
 const Registration_data_Name=async(req,res)=>{
     
@@ -250,9 +277,10 @@ const Milk_Data_find=async(req,res)=>{
     var id=req.params.id;
     // var Month=req.params.Month;
     // var year=req.params.year;
-
+    console.log(id);
     var data= await Milk_Data_Require.find({"user_id":id});
     //var Month;
+    console.log(data)
 
     res.status(200).json(
        data
@@ -289,4 +317,4 @@ const _Product_data_find=async(req,res)=>{
 };
 module.exports={Registration_data,Login_Data,customer_Sell_Data,Registration_data_Name,Milk_Data,
     Registration_data_Update,_Product_data_,Registration_data_Number,customer_Sell_Data_find,Milk_Data_find,Milk_data_Update,_Product_data_find,
-    Admin_Registration_data,customer_Sell_Data_find_All}
+    Admin_Registration_data,customer_Sell_Data_find_All,Admin_Login_Data}
