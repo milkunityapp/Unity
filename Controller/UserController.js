@@ -100,11 +100,9 @@ const Registration_data_Name=async(req,res)=>{
     {
         if(data[index].First_Name==req.params.First_Name)
         {
-            console.log("ok")
             var data1=data[index];
         }
     }
-    console.log(data1)
     res.status(200).json(
         [data1]
     )
@@ -116,11 +114,9 @@ const Registration_data_Number=async(req,res)=>{
     {
         if(data[index].Mobile_Number==req.params.Mobile_Number)
         {
-            console.log("ok")
             var data1=data[index];
         }
     }
-    console.log(data1)
     res.status(200).json(
         [data1]
     )
@@ -228,10 +224,8 @@ const Milk_Data=async(req,res)=>{
 const Milk_Data_find=async(req,res)=>{
 
     var id=req.params.id;
-    console.log(id);
     var data= await Milk_Data_Require.find({"user_id":id});
     
-    console.log(data)
 
     res.status(200).json(
        [data]
@@ -239,8 +233,6 @@ const Milk_Data_find=async(req,res)=>{
 };
 const Milk_Data_find_Date=async(req,res)=>{
 
-    var id=req.params.id;
-    console.log(id);
     const query = {
         $and: [
           { user_id: req.params.id},
@@ -250,10 +242,6 @@ const Milk_Data_find_Date=async(req,res)=>{
       };
     var data= await Milk_Data_Require.find(query);
     
-    console.log(req.params.Month)
-    console.log(req.params.Year)
-    console.log(data)
-
     res.status(200).json(
         [data]
     )
