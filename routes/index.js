@@ -32,7 +32,7 @@ router.get('/customer-Selling/:id',customer_Sell_Data_find);
 router.get('/customer-Selling/',customer_Sell_Data_find_All);
 router.post('/Milk_Data/:id',Milk_Data);
 router.get('/Milk_Data/:id',Milk_Data_find);
-router.get('/Milk_Data/Date/:id',Milk_Data_find_Date);
+router.get('/Milk_Data/:id/:Month/:Year',Milk_Data_find_Date);
 router.post('/Product_Add',upload.single('product_image'),_Product_data_);
 router.get('/Product_Add',_Product_data_find);
 module.exports = router;

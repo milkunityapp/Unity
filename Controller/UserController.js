@@ -3,7 +3,6 @@ var customer_data=require("../Model/Final_Bill_Data");
 var Milk_Data_Require=require("../Model/Milk_Data");
 var product_Add_Data=require("../Model/Product_Add");
 var Admin_form=require("../Model/Admin_Registration");
-// const storage = require('node-persist');
 
 
 var nodemailer = require('nodemailer');
@@ -48,17 +47,18 @@ const Registration_data=async(req,res)=>{
               });
             
         }
+        else
+        {
+            res.status(200).json(
+                "Your Email is already register"
+             )
+        }
     }
     else
     {
-        if(d.length!=0){
-        res.status(200).json({
-           status:"Your Number is already register"
-        })}
-        if(d1.length!=0){
-            res.status(200).json({
-               status:"Your Email is already register"
-            })}
+        res.status(200).json(
+           "Your Number is already register"
+        )
     }
 };
 
@@ -80,17 +80,16 @@ const Admin_Registration_data=async(req,res)=>{
         }
         else
         {
-                res.status(200).json({
-                   status:"Your Email is already register"
-                })
+                res.status(200).json(
+                   "Your Email is already register"
+                )
         }
     }
     else
     {
-        if(d.length!=0){
-        res.status(200).json({
-           status:"Your Number is already register"
-        })}
+        res.status(200).json(
+           "Your Number is already register"
+        )
        
     }
 };
@@ -133,7 +132,7 @@ const Registration_data_Update=async(req,res)=>{
     var data= await form.findByIdAndUpdate(id,req.body);
 
     res.status(200).json(
-        data
+        [data]
     )
 };
 
@@ -148,7 +147,7 @@ const Login_Data=async(req,res)=>
         if(data[0].password==req.body.password)
         {
             res.status(200).json(
-                data
+                [data]
             )
         }
         else
@@ -191,7 +190,7 @@ const customer_Sell_Data=async(req,res)=>{
 
     var a=await customer_data.create(req.body);
     res.status(200).json(
-        a
+        [a]
     )
 };
 const customer_Sell_Data_find=async(req,res)=>{
@@ -201,14 +200,14 @@ const customer_Sell_Data_find=async(req,res)=>{
     var data= await customer_data.find({"user_id":id});
 
     res.status(200).json(
-        data
+        [data]
     )
 };
 const customer_Sell_Data_find_All=async(req,res)=>{
     
     var data= await customer_data.find();
     res.status(200).json(
-        data
+        [data]
     )
 };
 const Milk_Data=async(req,res)=>{
@@ -222,7 +221,7 @@ const Milk_Data=async(req,res)=>{
 
     var a=await Milk_Data_Require.create(req.body);
     res.status(200).json(
-        a
+        [a]
     )
 };
 
@@ -235,19 +234,28 @@ const Milk_Data_find=async(req,res)=>{
     console.log(data)
 
     res.status(200).json(
-       data
+       [data]
     )
 };
 const Milk_Data_find_Date=async(req,res)=>{
 
     var id=req.params.id;
     console.log(id);
-    var data= await Milk_Data_Require.find({"$and":[{startMonth:{"$lte":8}},{startYear:{"$lte":2023}}]}).pretty();
+    const query = {
+        $and: [
+          { user_id: req.params.id},
+          { Month: req.params.Month},
+          { year: req.params.Year }
+        ]
+      };
+    var data= await Milk_Data_Require.find(query);
     
+    console.log(req.params.Month)
+    console.log(req.params.Year)
     console.log(data)
 
     res.status(200).json(
-       data
+        [data]
     )
 };
 
@@ -261,7 +269,7 @@ const _Product_data_= async(req,res)=>
        }
     var a=await product_Add_Data.create(obj);
     res.status(200).json(
-        a
+        [a]
     )
 };
 const Milk_data_Update=async(req,res)=>{
@@ -269,14 +277,14 @@ const Milk_data_Update=async(req,res)=>{
     var data= await form.findByIdAndUpdate(id,req.body);
 
     res.status(200).json(
-        data
+        [data]
     )
 };
 const _Product_data_find=async(req,res)=>{
     
     var data= await product_Add_Data.find();
     res.status(200).json(
-        data
+        [data]
     )
 };
 const Otp_Post=async(req,res)=>{
@@ -294,7 +302,7 @@ const Otp_Post=async(req,res)=>{
                     res.status(200).json(
                          Otp_get=async(req,res)=>{
                             res.status(200).json(
-                                otp
+                                [otp]
                             )
                         }
                    )
