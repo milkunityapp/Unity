@@ -7,17 +7,8 @@ const Sell_Data = new mongoose.Schema({
     day:{type:String},
     First_Name:{type:String},
     Sell_Time:{type:String},
-    payment_method: {
-        type: String,
-        enum: ['cash', 'online'],
-        required: true, 
-    },
-    payment_Status: {
-        type: String,
-        enum: ['Received', 'Panding'],
-        required: true,
-    },
-    customer_id:{type:String},
+    payment_method:{type:String},
+    payment_Status:{type:String},
     user_id:{type:String}
 });
 

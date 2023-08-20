@@ -259,7 +259,14 @@ const customer_Sell_find_Date_=async(req,res)=>{
         data
     )
 };
+const customer_Sell_Data_Update=async(req,res)=>{
+    var id = req.params.id;
+    var data= await customer_data.findByIdAndUpdate(id,req.body);
 
+    res.status(200).json(
+        [data]
+    )
+};
 
 
 
@@ -384,5 +391,6 @@ module.exports={
     Milk_Data_find_Date,
     customer_Sell_find_Date,
     customer_Sell_find_Date_,
-    Product_data_Update
+    Product_data_Update,
+    customer_Sell_Data_Update
 }
