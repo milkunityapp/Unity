@@ -61,6 +61,49 @@ const Registration_data=async(req,res)=>{
         )
     }
 };
+const Registration_data_Name=async(req,res)=>{
+    
+    var data= await form.find();
+    for (let index = 0; index < data.length; index++) 
+    {
+        if(data[index].First_Name==req.params.First_Name)
+        {
+            var data1=data[index];
+        }
+    }
+    res.status(200).json(
+        [data1]
+    )
+};
+const Registration_data_Number=async(req,res)=>{
+    
+    var data= await form.find();
+    for (let index = 0; index < data.length; index++) 
+    {
+        if(data[index].Mobile_Number==req.params.Mobile_Number)
+        {
+            var data1=data[index];
+        }
+    }
+    res.status(200).json(
+        [data1]
+    )
+};
+const Registration_data_Update=async(req,res)=>{
+    var id = req.params.id;
+    var data= await form.findByIdAndUpdate(id,req.body);
+
+    res.status(200).json(
+        [data]
+    )
+};
+
+
+
+
+
+
+
 
 const Admin_Registration_data=async(req,res)=>{
     var d=await form.find({'Mobile_Number':req.body.Mobile_Number});
@@ -93,44 +136,12 @@ const Admin_Registration_data=async(req,res)=>{
        
     }
 };
-const Registration_data_Name=async(req,res)=>{
-    
-    var data= await form.find();
-    for (let index = 0; index < data.length; index++) 
-    {
-        if(data[index].First_Name==req.params.First_Name)
-        {
-            var data1=data[index];
-        }
-    }
-    res.status(200).json(
-        [data1]
-    )
-};
-const Registration_data_Number=async(req,res)=>{
-    
-    var data= await form.find();
-    for (let index = 0; index < data.length; index++) 
-    {
-        if(data[index].Mobile_Number==req.params.Mobile_Number)
-        {
-            var data1=data[index];
-        }
-    }
-    res.status(200).json(
-        [data1]
-    )
-};
 
 
-const Registration_data_Update=async(req,res)=>{
-    var id = req.params.id;
-    var data= await form.findByIdAndUpdate(id,req.body);
 
-    res.status(200).json(
-        [data]
-    )
-};
+
+
+
 
 const Login_Data=async(req,res)=>
 {
@@ -160,6 +171,11 @@ const Login_Data=async(req,res)=>
         )
    }
 };
+
+
+
+
+
 
 const customer_Sell_Data=async(req,res)=>{
 
@@ -206,46 +222,6 @@ const customer_Sell_Data_find_All=async(req,res)=>{
         [data]
     )
 };
-const Milk_Data=async(req,res)=>{
-
-    req.body.user_id=req.params.user_id;
-
-    const currentDate = new Date();
-    req.body.date=currentDate.getDate();
-    req.body.Month=currentDate.getMonth() + 1;
-    req.body.year=currentDate.getFullYear();
-
-    var a=await Milk_Data_Require.create(req.body);
-    res.status(200).json(
-        [a]
-    )
-};
-
-const Milk_Data_find=async(req,res)=>{
-
-    var id=req.params.id;
-    var data= await Milk_Data_Require.find({"user_id":id});
-    
-
-    res.status(200).json(
-       [data]
-    )
-};
-const Milk_Data_find_Date=async(req,res)=>{
-
-    const query = {
-        $and: [
-          { user_id: req.params.id},
-          { Month: req.params.Month},
-          { year: req.params.Year }
-        ]
-      };
-    var data= await Milk_Data_Require.find(query);
-    
-    res.status(200).json(
-        [data]
-    )
-};
 const customer_Sell_find_Date=async(req,res)=>{
 
     const query = {
@@ -277,6 +253,63 @@ const customer_Sell_find_Date_=async(req,res)=>{
         [data]
     )
 };
+
+
+
+
+
+
+const Milk_Data=async(req,res)=>{
+
+    req.body.user_id=req.params.user_id;
+
+    const currentDate = new Date();
+    req.body.date=currentDate.getDate();
+    req.body.Month=currentDate.getMonth() + 1;
+    req.body.year=currentDate.getFullYear();
+
+    var a=await Milk_Data_Require.create(req.body);
+    res.status(200).json(
+        [a]
+    )
+};
+const Milk_Data_find=async(req,res)=>{
+
+    var id=req.params.id;
+    var data= await Milk_Data_Require.find({"user_id":id});
+    
+
+    res.status(200).json(
+       [data]
+    )
+};
+const Milk_Data_find_Date=async(req,res)=>{
+
+    const query = {
+        $and: [
+          { user_id: req.params.id},
+          { Month: req.params.Month},
+          { year: req.params.Year }
+        ]
+      };
+    var data= await Milk_Data_Require.find(query);
+    
+    res.status(200).json(
+        [data]
+    )
+};
+const Milk_data_Update=async(req,res)=>{
+    var id = req.params.id;
+    var data= await form.findByIdAndUpdate(id,req.body);
+
+    res.status(200).json(
+        [data]
+    )
+};
+
+
+
+
 const _Product_data_= async(req,res)=>
 {
 
@@ -290,14 +323,6 @@ const _Product_data_= async(req,res)=>
         [a]
     )
 };
-const Milk_data_Update=async(req,res)=>{
-    var id = req.params.id;
-    var data= await form.findByIdAndUpdate(id,req.body);
-
-    res.status(200).json(
-        [data]
-    )
-};
 const _Product_data_find=async(req,res)=>{
     
     var data= await product_Add_Data.find();
@@ -305,6 +330,9 @@ const _Product_data_find=async(req,res)=>{
         [data]
     )
 };
+
+
+
 const Otp_Post=async(req,res)=>{
             var otp = ("" + Math.random()).substring(2, 8)
             var mailOptions = {
