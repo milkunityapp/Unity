@@ -233,7 +233,6 @@ const customer_Sell_find_Date=async(req,res)=>{
 
     const query = {
         $and: [
-          { user_id: req.params.id},
           { Month: req.params.Month},
           { year: req.params.Year },
           { First_Name: req.params.First_Name }

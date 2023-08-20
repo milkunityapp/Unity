@@ -48,7 +48,7 @@ router.post('/Login',Login_Data);
 router.post('/customer-Selling/:user_id/:First_Name',customer_Sell_Data);
 router.get('/customer-Selling/:id',customer_Sell_Data_find);
 router.get('/customer-Selling/:Month/:Year',customer_Sell_Data_find_All);
-router.get('/customer-Selling/:id/:Month/:Year/:First_Name',customer_Sell_find_Date);
+router.get('/customer-Selling/:Month/:Year/:First_Name',customer_Sell_find_Date);
 router.get('/customer-Selling_/:id/:Month/:Year',customer_Sell_find_Date_);
 
 router.post('/Milk_Data/Update/:id',Milk_data_Update);
