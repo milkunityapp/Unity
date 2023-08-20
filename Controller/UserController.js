@@ -154,7 +154,7 @@ const Login_Data=async(req,res)=>
         if(data[0].password==req.body.password)
         {
             res.status(200).json(
-                [data]
+                data
             )
         }
         else
@@ -212,14 +212,21 @@ const customer_Sell_Data_find=async(req,res)=>{
     var data= await customer_data.find({"user_id":id});
 
     res.status(200).json(
-        [data]
+        data
     )
 };
 const customer_Sell_Data_find_All=async(req,res)=>{
     
-    var data= await customer_data.find();
+    const query = {
+        $and: [
+          { Month: req.params.Month},
+          { year: req.params.Year }
+        ]
+      };
+    var data= await customer_data.find(query);
+
     res.status(200).json(
-        [data]
+        data
     )
 };
 const customer_Sell_find_Date=async(req,res)=>{
@@ -235,7 +242,7 @@ const customer_Sell_find_Date=async(req,res)=>{
     var data= await customer_data.find(query);
     
     res.status(200).json(
-        [data]
+        data
     )
 };
 const customer_Sell_find_Date_=async(req,res)=>{
@@ -250,7 +257,7 @@ const customer_Sell_find_Date_=async(req,res)=>{
     var data= await customer_data.find(query);
     
     res.status(200).json(
-        [data]
+        data
     )
 };
 
@@ -280,7 +287,7 @@ const Milk_Data_find=async(req,res)=>{
     
 
     res.status(200).json(
-       [data]
+       data
     )
 };
 const Milk_Data_find_Date=async(req,res)=>{
@@ -295,12 +302,12 @@ const Milk_Data_find_Date=async(req,res)=>{
     var data= await Milk_Data_Require.find(query);
     
     res.status(200).json(
-        [data]
+        data
     )
 };
 const Milk_data_Update=async(req,res)=>{
     var id = req.params.id;
-    var data= await form.findByIdAndUpdate(id,req.body);
+    var data= await Milk_Data_Require.findByIdAndUpdate(id,req.body);
 
     res.status(200).json(
         [data]
@@ -327,7 +334,7 @@ const _Product_data_find=async(req,res)=>{
     
     var data= await product_Add_Data.find();
     res.status(200).json(
-        [data]
+        data
     )
 };
 
