@@ -252,6 +252,22 @@ const customer_Sell_find_Date=async(req,res)=>{
         $and: [
           { user_id: req.params.id},
           { Month: req.params.Month},
+          { year: req.params.Year },
+          { First_Name: req.params.First_Name }
+        ]
+      };
+    var data= await customer_data.find(query);
+    
+    res.status(200).json(
+        [data]
+    )
+};
+const customer_Sell_find_Date_=async(req,res)=>{
+
+    const query = {
+        $and: [
+          { user_id: req.params.id},
+          { Month: req.params.Month},
           { year: req.params.Year }
         ]
       };
@@ -328,5 +344,6 @@ module.exports={
     Admin_Registration_data,
     customer_Sell_Data_find_All,
     Milk_Data_find_Date,
-    customer_Sell_find_Date
+    customer_Sell_find_Date,
+    customer_Sell_find_Date_
 }
