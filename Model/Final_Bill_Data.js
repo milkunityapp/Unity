@@ -5,6 +5,7 @@ const Sell_Data = new mongoose.Schema({
     Month:{type:String},
     year:{type:String},
     day:{type:String},
+    First_Name:{type:String},
     Sell_Time:{type:String},
     payment_method: {
         type: String,

@@ -46,7 +46,7 @@ router.post('/Admin-Registration',Admin_Registration_data);
 
 router.post('/Login',Login_Data);
 
-router.post('/customer-Selling/:user_id',customer_Sell_Data);
+router.post('/customer-Selling/:user_id/:First_Name',customer_Sell_Data);
 router.get('/customer-Selling/:id',customer_Sell_Data_find);
 router.get('/customer-Selling/:Month/:Year',customer_Sell_Data_find_All);
 router.get('/customer-Selling/:Month/:Year/:First_Name',customer_Sell_find_Date);

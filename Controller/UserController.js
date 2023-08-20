@@ -198,6 +198,7 @@ const customer_Sell_Data=async(req,res)=>{
 
     const currentTime = `${twelveHourFormat}:${minutes}: ${amOrPm}`;
     req.body.Sell_Time=currentTime;
+    req.body.First_Name=req.params.First_Name;
 
     var a=await customer_data.create(req.body);
     res.status(200).json(
