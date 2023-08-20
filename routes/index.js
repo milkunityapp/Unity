@@ -20,7 +20,8 @@ const {
   customer_Sell_Data_find_All,
   Milk_data_Update,
   customer_Sell_find_Date,
-  customer_Sell_find_Date_
+  customer_Sell_find_Date_,
+  Product_data_Update
 }=require("../Controller/UserController");
 
     
@@ -56,6 +57,7 @@ router.post('/Milk_Data/:id',Milk_Data);
 router.get('/Milk_Data/:id',Milk_Data_find);
 router.get('/Milk_Data/:id/:Month/:Year',Milk_Data_find_Date);
 
-router.post('/Product_Add',upload.single('product_image'),_Product_data_);
+router.post('/Product_Add',_Product_data_);
 router.get('/Product_Add',_Product_data_find);
+router.post('/Product_Add/Update/:id',Product_data_Update);
 module.exports = router;

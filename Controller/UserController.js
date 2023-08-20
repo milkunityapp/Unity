@@ -318,13 +318,7 @@ const Milk_data_Update=async(req,res)=>{
 
 const _Product_data_= async(req,res)=>
 {
-
-    var obj = {
-        "product_name":req.body.product_name,
-        "product_price":req.body.product_price,
-        "product_image":req.file.originalname
-       }
-    var a=await product_Add_Data.create(obj);
+    var a=await product_Add_Data.create(req.body);
     res.status(200).json(
         [a]
     )
@@ -336,7 +330,14 @@ const _Product_data_find=async(req,res)=>{
         data
     )
 };
+const Product_data_Update=async(req,res)=>{
+    var id = req.params.id;
+    var data= await product_Add_Data.findByIdAndUpdate(id,req.body);
 
+    res.status(200).json(
+        [data]
+    )
+};
 
 
 const Otp_Post=async(req,res)=>{
@@ -379,5 +380,6 @@ module.exports={
     customer_Sell_Data_find_All,
     Milk_Data_find_Date,
     customer_Sell_find_Date,
-    customer_Sell_find_Date_
+    customer_Sell_find_Date_,
+    Product_data_Update
 }
