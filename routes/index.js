@@ -53,7 +53,7 @@ router.get('/customer-Selling/:Month/:Year/:First_Name',customer_Sell_find_Date)
 router.get('/customer-Selling_/:id/:Month/:Year',customer_Sell_find_Date_);
 
 router.post('/Milk_Data/Update/:id',Milk_data_Update);
-router.post('/Milk_Data/:id',Milk_Data);
+router.post('/Milk_Data/:user_id',Milk_Data);
 router.get('/Milk_Data/:id',Milk_Data_find);
 router.get('/Milk_Data/:id/:Month/:Year',Milk_Data_find_Date);
 
