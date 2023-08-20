@@ -3,9 +3,24 @@ var router = express.Router();
 const mongoose  = require("mongoose");
 const multer = require('multer');
 
-const {Registration_data,Login_Data,customer_Sell_Data,Registration_data_Name,Milk_Data,
-    Registration_data_Update,_Product_data_,Registration_data_Number,customer_Sell_Data_find,Milk_Data_find_Date,
-    Milk_Data_find,_Product_data_find,Admin_Registration_data,customer_Sell_Data_find_All,Milk_data_Update}=require("../Controller/UserController");
+const {
+  Registration_data,
+  Login_Data,
+  customer_Sell_Data,
+  Registration_data_Name,
+  Milk_Data,
+  Registration_data_Update,
+  _Product_data_,
+  Registration_data_Number,
+  customer_Sell_Data_find,
+  Milk_Data_find_Date,
+  Milk_Data_find,
+  _Product_data_find,
+  Admin_Registration_data,
+  customer_Sell_Data_find_All,
+  Milk_data_Update,
+  customer_Sell_find_Date
+}=require("../Controller/UserController");
 
     
 // SET STORAGE
@@ -33,6 +48,7 @@ router.get('/customer-Selling/',customer_Sell_Data_find_All);
 router.post('/Milk_Data/:id',Milk_Data);
 router.get('/Milk_Data/:id',Milk_Data_find);
 router.get('/Milk_Data/:id/:Month/:Year',Milk_Data_find_Date);
+router.get('/customer-Selling/:id/:Month/:Year',customer_Sell_find_Date);
 router.post('/Product_Add',upload.single('product_image'),_Product_data_);
 router.get('/Product_Add',_Product_data_find);
 module.exports = router;

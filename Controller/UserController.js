@@ -246,7 +246,21 @@ const Milk_Data_find_Date=async(req,res)=>{
         [data]
     )
 };
+const customer_Sell_find_Date=async(req,res)=>{
 
+    const query = {
+        $and: [
+          { user_id: req.params.id},
+          { Month: req.params.Month},
+          { year: req.params.Year }
+        ]
+      };
+    var data= await customer_data.find(query);
+    
+    res.status(200).json(
+        [data]
+    )
+};
 const _Product_data_= async(req,res)=>
 {
 
@@ -298,6 +312,21 @@ const Otp_Post=async(req,res)=>{
               });
 };
 
-module.exports={Registration_data,Login_Data,customer_Sell_Data,Registration_data_Name,Milk_Data,
-    Registration_data_Update,_Product_data_,Registration_data_Number,customer_Sell_Data_find,Milk_Data_find,Milk_data_Update,_Product_data_find,
-    Admin_Registration_data,customer_Sell_Data_find_All,Milk_Data_find_Date}
+module.exports={
+    Registration_data,
+    Login_Data,
+    customer_Sell_Data,
+    Registration_data_Name,
+    Milk_Data,
+    Registration_data_Update,
+    _Product_data_,
+    Registration_data_Number,
+    customer_Sell_Data_find,
+    Milk_Data_find,
+    Milk_data_Update,
+    _Product_data_find,
+    Admin_Registration_data,
+    customer_Sell_Data_find_All,
+    Milk_Data_find_Date,
+    customer_Sell_find_Date
+}
