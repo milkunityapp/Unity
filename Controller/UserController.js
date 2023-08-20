@@ -273,6 +273,9 @@ const Milk_Data=async(req,res)=>{
     req.body.date=currentDate.getDate();
     req.body.Month=currentDate.getMonth() + 1;
     req.body.year=currentDate.getFullYear();
+    
+    var data= await product_Add_Data.find();
+    req.body.Price=data[0].product_price;
 
     var a=await Milk_Data_Require.create(req.body);
     res.status(200).json(

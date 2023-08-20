@@ -6,6 +6,7 @@ const Milk_Sell_Data = new mongoose.Schema({
     year:{type:String},
     Morning_Milk:{type:Number},
     Night_Milk:{type:Number},
+    Price:{type:Number},
     user_id:{type:String}
 });
 
